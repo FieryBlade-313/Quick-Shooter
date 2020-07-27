@@ -6,13 +6,17 @@ public class Controller : MonoBehaviour
 {
     
     public float speed = 50f;
+    public float angleSmoothSpeed = 10f;
     public Camera cam;
     private Vector2 AxisInput = new Vector2(0,0);
     private Vector2 mousePos = new Vector2(0,0);
     private Rigidbody2D rb;
+
+    private TimeController time_ctr;
     // Start is called before the first frame update
     void Start()
     {
+        time_ctr = gameObject.GetComponent<TimeController>();
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
