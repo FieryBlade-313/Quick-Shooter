@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1822068008759178069}
   - component: {fileID: -6913422375247355365}
   - component: {fileID: 8690981792441544942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &-6913422375247355365
 MonoBehaviour:
