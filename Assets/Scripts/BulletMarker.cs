@@ -12,6 +12,8 @@ public class BulletMarker : MonoBehaviour
 
     public float n = 3f;
 
+    public TargetMarker targetMarker;
+
     private void Start()
     {
         bulletMarker = gameObject.GetComponent<LineRenderer>();
@@ -24,11 +26,13 @@ public class BulletMarker : MonoBehaviour
         Vector3 dir = -1*Vector3.Normalize(bulletPos - mousePos);
         Vector3 offsetPos = dir*offset+bulletPos;
         bulletMarker.SetPosition(0,offsetPos);
-        mousePos = Vector3.Lerp(offsetPos,bulletPos+dir*radius,Vector3.Distance(bulletPos,mousePos)/radius);
+        float pullFactor = Mathf.Lerp(0,1f,Vector3.Distance(bulletPos,mousePos)/radius);
+        mousePos = Vector3.Lerp(offsetPos,bulletPos+dir*radius,pullFactor);
         bulletMarker.startWidth =  (maxWidth-minWidth)*Mathf.Exp(-Mathf.Pow(Vector3.Distance(offsetPos,mousePos),n)/(radius-offset))+minWidth;
         // print(offset + " " + Vector3.Distance(offsetPos,bulletPos));
         // print(bulletMarker.startWidth);
         bulletMarker.SetPosition(1,mousePos);
+        targetMarker.DrawMarker(bulletPos,-1*dir,pullFactor);
     }
 
     public void ResetMarker()
@@ -36,5 +40,6 @@ public class BulletMarker : MonoBehaviour
         bulletMarker.SetPosition(0,transform.position);
         bulletMarker.SetPosition(1,transform.position);
         bulletMarker.startWidth = 0;
+        targetMarker.ResetMarker();
     }
 }
