@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody2D rb; 
 
+    public BulletMarker bulletMarker;
+
     private void Start()
     {
         launchDir = transform.position;
@@ -31,24 +33,33 @@ public class Bullet : MonoBehaviour
     }
     private void Update()
     {
-        if(launch && Input.GetMouseButtonUp(0))
+        if(launch)
         {
-            // print(transform.position+" "+launchDir);
-            Vector2 pos = new Vector2(transform.position.x,transform.position.y);
-            Vector2 res = (pos-launchDir).normalized;
-            float dist = Mathf.Clamp(Vector2.Distance(pos,launchDir)/maxRadius,0,1);
-            rb.velocity = Vector2.zero;
-            rb.AddForce(res*maxForce*dist,ForceMode2D.Impulse);
-            launch = false;
+            bulletMarker.DrawMarker(transform.position,new Vector3(launchDir.x,launchDir.y,0),maxRadius);
+            if(Input.GetMouseButtonUp(0))
+            {
+                // print(transform.position+" "+launchDir);
+                Vector2 pos = new Vector2(transform.position.x,transform.position.y);
+                Vector2 res = (pos-launchDir).normalized;
+                float dist = Mathf.Clamp(Vector2.Distance(pos,launchDir)/maxRadius,0,1);
+                rb.velocity = Vector2.zero;
+                rb.AddForce(res*maxForce*dist,ForceMode2D.Impulse);
+                bulletMarker.ResetMarker();
+                launch = false;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag != "Bullet")
+        {
+            bulletMarker.ResetMarker();
             Destroy(gameObject);
+        }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
+        bulletMarker.ResetMarker();
         Destroy(gameObject);
     }
 

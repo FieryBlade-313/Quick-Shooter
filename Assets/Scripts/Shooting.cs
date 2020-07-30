@@ -12,6 +12,8 @@ public class Shooting : MonoBehaviour
     public float maxRadius = 2f;
     public Camera cam;
 
+    public BulletMarker bulletMarker;
+
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +30,7 @@ public class Shooting : MonoBehaviour
         bul.cam = cam;
         bul.maxForce = powerForce;
         bul.maxRadius = maxRadius;
+        bul.bulletMarker = bulletMarker;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up*bulletForce,ForceMode2D.Impulse);
     }
