@@ -11,13 +11,13 @@ public class Bullet : MonoBehaviour
     public float maxRadius;
     [HideInInspector]
     public Camera cam;
+    [HideInInspector]
+    public BulletMarker bulletMarker;
+    public ParticleSystem explosion;
 
     private Vector2 launchDir;
 
     private Rigidbody2D rb; 
-
-    public BulletMarker bulletMarker;
-
     private void Start()
     {
         launchDir = transform.position;
@@ -54,14 +54,22 @@ public class Bullet : MonoBehaviour
         if(other.tag != "Bullet")
         {
             bulletMarker.ResetMarker();
+            if(other.tag != "Boundary"){
+                var exp =Instantiate(explosion,transform.position,Quaternion.identity);
+                Destroy(exp,2f);
+            }
             Destroy(gameObject);
         }
     }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        bulletMarker.ResetMarker();
-        Destroy(gameObject);
-    }
+    // private void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     bulletMarker.ResetMarker();
+    //     if(other.gameObject.tag != "Boundary"){
+    //         var exp =Instantiate(explosion,transform.position,Quaternion.identity);
+    //         Destroy(exp,2f);
+    //     }
+    //     Destroy(gameObject);
+    // }
 
     private void OnDrawGizmos()
     {
