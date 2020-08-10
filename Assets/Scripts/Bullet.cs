@@ -55,8 +55,8 @@ public class Bullet : MonoBehaviour
         {
             bulletMarker.ResetMarker();
             if(other.tag != "Boundary"){
-                var exp =Instantiate(explosion,transform.position,Quaternion.identity);
-                Destroy(exp,2f);
+                ParticleSystem exp = Instantiate(explosion,transform.position,Quaternion.identity);
+                Destroy(exp.gameObject,2f);
             }
             Destroy(gameObject);
         }
