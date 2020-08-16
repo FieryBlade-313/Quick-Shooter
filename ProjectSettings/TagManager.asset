@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Boundary
+  - Detector
   layers:
   - Default
   - TransparentFX
@@ -17,10 +18,10 @@ TagManager:
   - 
   - Bullet
   - Post-Processing
-  - 
-  - 
-  - 
-  - 
+  - Identifier
+  - Player
+  - Detectors
+  - Obstacles
   - 
   - 
   - 

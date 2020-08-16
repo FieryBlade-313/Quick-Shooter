@@ -123,6 +123,8 @@ MonoBehaviour:
   bulletMarker: {fileID: 0}
   explosion: {fileID: 1986910785872249147, guid: 9fc6179f6150acc4a8ff03e37b50e9de,
     type: 3}
+  rangeCollider: {fileID: 6595073217592158111, guid: 706b6c94093bc8843872661991367492,
+    type: 3}
 --- !u!58 &8690981792441544942
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -138,4 +140,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.13
+  m_Radius: 0.15

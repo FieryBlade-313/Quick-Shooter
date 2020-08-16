@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class TimeController : MonoBehaviour
 {
@@ -21,8 +22,11 @@ public class TimeController : MonoBehaviour
 
     public TimeBar timeBar;
 
+    public PostProcessProfile postProcessProfile;
     [HideInInspector]
     public bool isSlow = false;
+
+    private ColorGrading colorGrading;
 
     private void Start()
     {
@@ -30,6 +34,7 @@ public class TimeController : MonoBehaviour
         maxSize = currSize;
         currTime = maxTime;
         timeBar.SetMaxTime(maxTime);
+        // colorGrading = postProcessProfile.GetSetting<ColorGrading>();
     }
 
     void Update()
@@ -61,5 +66,7 @@ public class TimeController : MonoBehaviour
         currSize = Mathf.Clamp(currSize,minSize,maxSize);
         vcam.m_Lens.OrthographicSize = currSize;
         timeBar.SetTimeVal(currTime);
+        // colorGrading.enabled.overrideState = isSlow;
+        // print(colorGrading.enabled.overrideState);
     }
 }

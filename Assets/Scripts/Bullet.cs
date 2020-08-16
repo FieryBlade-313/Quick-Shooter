@@ -14,10 +14,9 @@ public class Bullet : MonoBehaviour
     [HideInInspector]
     public BulletMarker bulletMarker;
     public ParticleSystem explosion;
-
     private Vector2 launchDir;
 
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
     private void Start()
     {
         launchDir = transform.position;
