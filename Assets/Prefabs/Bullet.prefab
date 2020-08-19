@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.8962264, g: 0.68179935, b: 0.17332679, a: 1}
   m_FlipX: 0
@@ -122,8 +122,6 @@ MonoBehaviour:
   cam: {fileID: 9025533688116844729, guid: 3a5074d91bd5df84cba2857c500129ee, type: 3}
   bulletMarker: {fileID: 0}
   explosion: {fileID: 1986910785872249147, guid: 9fc6179f6150acc4a8ff03e37b50e9de,
-    type: 3}
-  rangeCollider: {fileID: 6595073217592158111, guid: 706b6c94093bc8843872661991367492,
     type: 3}
 --- !u!58 &8690981792441544942
 CircleCollider2D:
