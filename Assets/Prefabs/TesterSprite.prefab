@@ -62,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 10
   angleRange: 90
+  inRange: 0
   isVisible: 0
   Direction: {x: 0, y: 0}
 --- !u!1 &8674675959496789350
@@ -180,6 +181,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotSpeed: 1
   chaseSpeed_modifier: 5
+  bulletPrefab: {fileID: 1337972864323696944, guid: cfcaf941feaf4fb4384ef3903fb9bc8b,
+    type: 3}
+  firePoint: {fileID: 8674675960254616681}
+  bulletForce: 10
+  powerForce: 2
+  maxRadius: 2
+  cam: {fileID: 0}
+  bulletMarker: {fileID: 0}
 --- !u!114 &327124563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6bcf6f049bdced498a5958c1f3e6930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 1.2
 --- !u!1 &8674675959778971664
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8674675960254616680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1063, z: 0}
+  m_LocalPosition: {x: 0, y: 0.135, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8674675959778971665}

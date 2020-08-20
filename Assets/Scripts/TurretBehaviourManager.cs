@@ -7,6 +7,8 @@ public class TurretBehaviourManager : MonoBehaviour
     private TurretBehaviourDefinition behaviourObject;
     private TurretBehaviourDefinition.State currState;
     private EnemyDetector detector;
+    private float currentTime;
+    public float waitTime = 1.2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class TurretBehaviourManager : MonoBehaviour
         switch (currState)
         {
             case TurretBehaviourDefinition.State.patrol:{
-                if(detector.isVisible)
+                if(detector.isVisible && detector.inRange)
                     currState = TurretBehaviourDefinition.State.chase;
                 else
                     behaviourObject.Patrol();
@@ -29,7 +31,8 @@ public class TurretBehaviourManager : MonoBehaviour
                 if(!detector.isVisible)
                 {
                     behaviourObject.SetDesiredDirection();
-                    currState = TurretBehaviourDefinition.State.patrol;
+                    currState = TurretBehaviourDefinition.State.wSearch;
+                    currentTime = Time.time;
                 }
                 else
                 {
@@ -38,6 +41,15 @@ public class TurretBehaviourManager : MonoBehaviour
             }break;
             case TurretBehaviourDefinition.State.shoot:{
 
+            }break;
+            case TurretBehaviourDefinition.State.wSearch:{
+                if(Time.time - currentTime > waitTime)
+                {
+                    behaviourObject.SetDesiredDirection();
+                    currState = TurretBehaviourDefinition.State.patrol;
+                }
+                else if(detector.isVisible)
+                    currState = TurretBehaviourDefinition.State.chase;
             }break;
         }
     }

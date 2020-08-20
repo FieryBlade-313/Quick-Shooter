@@ -5,13 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     bool launch = false;
-    [HideInInspector]
+    // [HideInInspector]
     public float maxForce;
-    [HideInInspector]
+    // [HideInInspector]
     public float maxRadius;
-    [HideInInspector]
+    // [HideInInspector]
     public Camera cam;
-    [HideInInspector]
+    // [HideInInspector]
     public BulletMarker bulletMarker;
     public ParticleSystem explosion;
     private Vector2 launchDir;

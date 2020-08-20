@@ -7,7 +7,8 @@ public class EnemyDetector : MonoBehaviour
     public float radius = 5.0f;
     public float angleRange = 90f;
     private CircleCollider2D rangeCollider;
-    private bool inRange = false;
+    [HideInInspector]
+    public bool inRange = false;
     [HideInInspector]
     public bool isVisible = false;
     public Vector2 Direction;
