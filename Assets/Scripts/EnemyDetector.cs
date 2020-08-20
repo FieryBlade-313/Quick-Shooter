@@ -23,7 +23,7 @@ public class EnemyDetector : MonoBehaviour
         fovLine2 = Quaternion.AngleAxis(-angleRange/2f,transform.forward)*transform.up*radius;
         rangeCollider = gameObject.GetComponent<CircleCollider2D>();
         rangeCollider.enabled = true;
-        rangeCollider.radius = radius*0.2f;
+        rangeCollider.radius = radius;
     }
     private void OnTriggerStay2D(Collider2D other)
     {
